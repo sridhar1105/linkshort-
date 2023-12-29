@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Shortener</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #shorten-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        #short-url {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Link Shortener</h2>
+
+    <form id="shorten-form">
+        <label for="original-url">Enter URL to shorten:</label>
+        <input type="url" id="original-url" placeholder="https://example.com" required>
+        <button type="button" onclick="shortenUrl()">Shorten</button>
+    </form>
+
+    <div id="short-url"></div>
+
+    <script>
+        function shortenUrl() {
+            // Simulate URL shortening (in a real application, this would be done on the server)
+            const originalUrl = document.getElementById('original-url').value;
+            const shortUrl = generateRandomString(6); // Simulate a short URL
+
+            // Display the short URL
+            const shortUrlContainer = document.getElementById('short-url');
+            shortUrlContainer.innerHTML = `Shortened URL: <a href="${shortUrl}" target="_blank">${shortUrl}</a>`;
+        }
+
+        function generateRandomString(length) {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let randomString = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                randomString += characters.charAt(randomIndex);
+            }
+            return randomString;
+        }
+    </script>
+
+</body>
+</html>
